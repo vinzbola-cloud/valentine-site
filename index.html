@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Valentine’s Day ❤️</title>
+<title>Valentine 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
 
@@ -15,7 +15,7 @@
 
 body {
   height: 100vh;
-  background: url('bg.jpeg') no-repeat center center/cover;
+  background: url('bg.jpg') no-repeat center center/cover;
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
 }
@@ -39,35 +39,59 @@ body {
 }
 
 .card {
-  max-width: 700px;
-  animation: fadeIn 2s ease;
+  max-width: 720px;
+  animation: fadeIn 1.8s ease;
 }
 
-.typewriter {
+.title {
   font-size: 28px;
-  margin-bottom: 20px;
-  min-height: 40px;
+  margin-bottom: 15px;
 }
 
 .name {
   font-family: 'Pacifico', cursive;
-  font-size: 52px;
+  font-size: 48px;
   color: #ffb6c1;
-  margin: 10px 0 20px;
-}
-
-.message {
-  font-size: 18px;
-  line-height: 1.7;
-  margin-bottom: 25px;
+  margin: 15px 0;
 }
 
 .photo img {
-  width: 280px;
+  width: 260px;
   border-radius: 20px;
   border: 4px solid #ffb6c1;
-  box-shadow: 0 0 30px rgba(255,182,193,0.8);
-  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 0 25px rgba(255,182,193,0.8);
+  margin: 20px 0;
+}
+
+.text {
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 15px 0;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  background: #ff5e78;
+  border: none;
+  padding: 12px 26px;
+  margin: 10px;
+  border-radius: 30px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+button:hover {
+  transform: scale(1.08);
+  background: #ff2f5e;
+}
+
+.hidden {
+  display: none;
 }
 
 .heart {
@@ -76,19 +100,9 @@ body {
   animation: fall linear infinite;
 }
 
-audio {
-  display: none;
-}
-
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(25px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0); }
 }
 
 @keyframes fall {
@@ -102,48 +116,86 @@ audio {
 
 <div class="overlay"></div>
 
-<audio autoplay loop>
-  <source src="music.mp3" type="audio/mpeg">
-</audio>
-
 <div class="container">
   <div class="card">
 
-    <div class="typewriter" id="typewriter"></div>
+    <div id="step1">
+      <div class="title">Hey, I am… oh, you know me 😉</div>
+      <div class="name">Happy Valentine’s Day, Ruchika ❤️</div>
 
-    <div class="name">Happy Valentine’s Day, Ruchika ❤️</div>
+      <div class="photo">
+        <img src="us.jpg" alt="Her">
+      </div>
 
-    <div class="message">
-      Whatever this world calls us, whatever time brings…  
-      one thing stays constant — I am always here as your best friend.  
-      Thank you for the laughs, the comfort, and the memories that mean more than words.
+      <div class="text">Do you have a Valentine?</div>
+
+      <div class="buttons">
+        <button onclick="goToYes()">Yes</button>
+        <button onclick="noValentine()">No</button>
+      </div>
     </div>
 
-    <div class="photo">
-      <img src="us.jpg" alt="Us">
+    <div id="step2" class="hidden">
+      <div class="text">
+        Please say yes 🥺👉👈  
+      </div>
+      <button onclick="goToYes()">Okay… Yes 💕</button>
+    </div>
+
+    <div id="step3" class="hidden">
+      <div class="text">
+        You are such a cutie pieeee 🥹❤️
+      </div>
+
+      <div class="text">
+        Will you be my Valentine?
+      </div>
+
+      <div class="buttons">
+        <button onclick="finalYes()">Yes 💖</button>
+        <button onclick="cryAndYes()">No</button>
+      </div>
+    </div>
+
+    <div id="final" class="hidden">
+      <div class="name">Happy Valentine’s Day, Ruchika ❤️</div>
+
+      <div class="text">
+        Whatever this is, whatever it becomes —  
+        I’m always here as your best friend.  
+        Thank you for existing and being *you* 💕
+      </div>
+
+      <div class="text">❤️❤️❤️</div>
     </div>
 
   </div>
 </div>
 
 <script>
-/* TYPEWRITER TEXT */
-const text = "Hey, I am… oh, you know me 😉";
-let index = 0;
-const speed = 80;
-const element = document.getElementById("typewriter");
-
-function typeEffect() {
-  if (index < text.length) {
-    element.innerHTML += text.charAt(index);
-    index++;
-    setTimeout(typeEffect, speed);
-  }
+function noValentine() {
+  document.getElementById("step1").classList.add("hidden");
+  document.getElementById("step2").classList.remove("hidden");
 }
-typeEffect();
 
-/* FALLING HEARTS */
-for (let i = 0; i < 35; i++) {
+function goToYes() {
+  document.getElementById("step1").classList.add("hidden");
+  document.getElementById("step2").classList.add("hidden");
+  document.getElementById("step3").classList.remove("hidden");
+}
+
+function cryAndYes() {
+  alert("Pleaseeee say yes 😭");
+  finalYes();
+}
+
+function finalYes() {
+  document.getElementById("step3").classList.add("hidden");
+  document.getElementById("final").classList.remove("hidden");
+}
+
+/* falling hearts */
+for (let i = 0; i < 30; i++) {
   const heart = document.createElement("div");
   heart.className = "heart";
   heart.innerHTML = "❤️";
@@ -156,3 +208,5 @@ for (let i = 0; i < 35; i++) {
 
 </body>
 </html>
+
+
