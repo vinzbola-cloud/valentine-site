@@ -2,110 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Ruchika ❤️</title>
+  <title>Just For You 🌷</title>
+
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Arial', sans-serif;
-      color: #fff;
-      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
     }
 
     .card {
-      background: rgba(0,0,0,0.4);
+      background: rgba(255, 255, 255, 0.95);
       padding: 30px;
-      border-radius: 15px;
+      border-radius: 20px;
       width: 90%;
-      max-width: 400px;
+      max-width: 420px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      text-align: center;
+      animation: fadeIn 1s ease;
     }
 
     h1 {
-      font-size: 24px;
+      font-size: 22px;
       margin-bottom: 15px;
+      color: #6a0572;
     }
 
     p {
-      font-size: 18px;
-      line-height: 1.5;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-line;
     }
 
     button {
       margin-top: 20px;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: none;
-      border-radius: 20px;
-      background: #ff4d6d;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #6a0572, #ab83a1);
       color: white;
-      font-size: 16px;
+      font-size: 15px;
       cursor: pointer;
+      transition: transform 0.2s;
     }
 
     button:hover {
-      background: #ff1e4d;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
+
 <body>
 
   <div class="card">
     <h1 id="title"></h1>
-    <p id="message"></p>
-    <button id="actionBtn" onclick="nextStep()">Next</button>
+    <p id="text"></p>
+    <button onclick="next()">Next</button>
   </div>
 
   <script>
     let step = 0;
 
-    function nextStep() {
-      const title = document.getElementById("title");
-      const message = document.getElementById("message");
-      const btn = document.getElementById("actionBtn");
+    const scenes = [
+      {
+        title: "Yo, what's up?",
+        text: "How was your day today?\n\nI hope it wasn’t too chaotic."
+      },
+      {
+        title: "Quick question 👀",
+        text: "Did you notice the date today?\n\nNo pressure. Just asking."
+      },
+      {
+        title: "Yeah… so",
+        text: "It’s 14th February.\n\nAnd before you overthink — relax 😄"
+      },
+      {
+        title: "This is not that kind of thing",
+        text: "This is just a small surprise.\n\nSomething simple.\nSomething nice.\nSomething… thoughtful."
+      },
+      {
+        title: "Happy Valentine’s Day 🌷",
+        text: "Ruchika\n\nNot in a dramatic way.\nNot in a cheesy way.\nJust in a… you-deserve-good-things way."
+      },
+      {
+        title: "From a friend’s side",
+        text:
+        "You’re honestly one of those people who make conversations lighter.\n\nYou listen well.\nYou react genuinely.\nAnd you have that calm vibe that makes things feel okay."
+      },
+      {
+        title: "This isn’t about having a Valentine",
+        text:
+        "It’s about reminding you that you matter.\n\nEven on normal days.\nEven without labels.\nEven without expectations."
+      },
+      {
+        title: "So think of this as a gift 🎁",
+        text:
+        "A digital one.\n\nFrom a male best friend\nwho just wanted to make you smile for a moment."
+      },
+      {
+        title: "One last thing 🙂",
+        text:
+        "If this made you smile even a little —\nDM me on Snap.\n\nAnd if you want to see this again,\njust click below."
+      }
+    ];
 
-      if (step === 0) {
-        title.innerText = "Yo, what's up?";
-        message.innerText = "How is your day going?";
+    function next() {
+      if (step < scenes.length) {
+        document.getElementById("title").innerText = scenes[step].title;
+        document.getElementById("text").innerText = scenes[step].text;
         step++;
-      } 
-      else if (step === 1) {
-        title.innerText = "By the way…";
-        message.innerText = "It's 14th February today 👀";
-        step++;
-      } 
-      else if (step === 2) {
-        title.innerText = "You know what that means, right?";
-        message.innerText = "Yeah… it’s your day ❤️";
-        step++;
-      } 
-      else if (step === 3) {
-        title.innerText = "Happy Valentine's Day 💖";
-        message.innerText = "Ruchika 🌸\n\nThis is just a small message to make you feel special.";
-        step++;
-      } 
-      else if (step === 4) {
-        title.innerText = "Just so you know…";
-        message.innerText = "I still think we are friends 😊\nAnd this is only to make you smile if you don't have a Valentine.";
-        step++;
-      } 
-      else if (step === 5) {
-        title.innerText = "One last thing 👀";
-        message.innerText = "If you liked this… DM me on Snap 📸\n\nIf you want to see it again, click below.";
-        btn.innerText = "Watch Again 🔁";
-        step++;
-      } 
-      else {
+      } else {
         step = 0;
-        btn.innerText = "Next";
-        title.innerText = "";
-        message.innerText = "";
+        next();
       }
     }
 
-    nextStep();
+    next();
   </script>
 
 </body>
