@@ -1,134 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Just For You 🌷</title>
+<meta charset="UTF-8">
+<title>Happy Valentine’s Day ❤️</title>
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Poppins', sans-serif;
-      color: #333;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Pacifico&display=swap" rel="stylesheet">
 
-    .card {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 30px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 420px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      text-align: center;
-      animation: fadeIn 1s ease;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    h1 {
-      font-size: 22px;
-      margin-bottom: 15px;
-      color: #6a0572;
-    }
+body {
+  height: 100vh;
+  background: url('bg.jpg') no-repeat center center/cover;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
 
-    p {
-      font-size: 16px;
-      line-height: 1.6;
-      white-space: pre-line;
-    }
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
 
-    button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 25px;
-      background: linear-gradient(135deg, #6a0572, #ab83a1);
-      color: white;
-      font-size: 15px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
+.container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
 
-    button:hover {
-      transform: scale(1.05);
-    }
+.card {
+  max-width: 700px;
+  animation: fadeIn 2s ease;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+.typewriter {
+  font-size: 28px;
+  margin-bottom: 20px;
+  min-height: 40px;
+}
+
+.name {
+  font-family: 'Pacifico', cursive;
+  font-size: 52px;
+  color: #ffb6c1;
+  margin: 10px 0 20px;
+}
+
+.message {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.photo img {
+  width: 280px;
+  border-radius: 20px;
+  border: 4px solid #ffb6c1;
+  box-shadow: 0 0 30px rgba(255,182,193,0.8);
+  animation: float 3s ease-in-out infinite;
+}
+
+.heart {
+  position: absolute;
+  color: #ff5e78;
+  animation: fall linear infinite;
+}
+
+audio {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10vh); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+</style>
 </head>
 
 <body>
 
+<div class="overlay"></div>
+
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
   <div class="card">
-    <h1 id="title"></h1>
-    <p id="text"></p>
-    <button onclick="next()">Next</button>
+
+    <div class="typewriter" id="typewriter"></div>
+
+    <div class="name">Happy Valentine’s Day, Ruchika ❤️</div>
+
+    <div class="message">
+      Whatever this world calls us, whatever time brings…  
+      one thing stays constant — I am always here as your best friend.  
+      Thank you for the laughs, the comfort, and the memories that mean more than words.
+    </div>
+
+    <div class="photo">
+      <img src="us.jpg" alt="Us">
+    </div>
+
   </div>
+</div>
 
-  <script>
-    let step = 0;
+<script>
+/* TYPEWRITER TEXT */
+const text = "Hey, I am… oh, you know me 😉";
+let index = 0;
+const speed = 80;
+const element = document.getElementById("typewriter");
 
-    const scenes = [
-      {
-        title: "Yo, what's up?",
-        text: "How was your day today?\n\nI hope it wasn’t too chaotic."
-      },
-      {
-        title: "Quick question 👀",
-        text: "Did you notice the date today?\n\nNo pressure. Just asking."
-      },
-      {
-        title: "Yeah… so",
-        text: "It’s 14th February.\n\nAnd before you overthink — relax 😄"
-      },
-      {
-        title: "This is not that kind of thing",
-        text: "This is just a small surprise.\n\nSomething simple.\nSomething nice.\nSomething… thoughtful."
-      },
-      {
-        title: "Happy Valentine’s Day 🌷",
-        text: "Ruchika\n\nNot in a dramatic way.\nNot in a cheesy way.\nJust in a… you-deserve-good-things way."
-      },
-      {
-        title: "From a friend’s side",
-        text:
-        "You’re honestly one of those people who make conversations lighter.\n\nYou listen well.\nYou react genuinely.\nAnd you have that calm vibe that makes things feel okay."
-      },
-      {
-        title: "This isn’t about having a Valentine",
-        text:
-        "It’s about reminding you that you matter.\n\nEven on normal days.\nEven without labels.\nEven without expectations."
-      },
-      {
-        title: "So think of this as a gift 🎁",
-        text:
-        "A digital one.\n\nFrom a male best friend\nwho just wanted to make you smile for a moment."
-      },
-      {
-        title: "One last thing 🙂",
-        text:
-        "If this made you smile even a little —\nDM me on Snap.\n\nAnd if you want to see this again,\njust click below."
-      }
-    ];
+function typeEffect() {
+  if (index < text.length) {
+    element.innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, speed);
+  }
+}
+typeEffect();
 
-    function next() {
-      if (step < scenes.length) {
-        document.getElementById("title").innerText = scenes[step].title;
-        document.getElementById("text").innerText = scenes[step].text;
-        step++;
-      } else {
-        step = 0;
-        next();
-      }
-    }
-
-    next();
-  </script>
+/* FALLING HEARTS */
+for (let i = 0; i < 35; i++) {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+  document.body.appendChild(heart);
+}
+</script>
 
 </body>
 </html>
