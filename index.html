@@ -44,13 +44,13 @@ body {
 }
 
 .title {
-  font-size: 28px;
-  margin-bottom: 15px;
+  font-size: 26px;
+  margin-bottom: 10px;
 }
 
 .name {
   font-family: 'Pacifico', cursive;
-  font-size: 48px;
+  font-size: 46px;
   color: #ffb6c1;
   margin: 15px 0;
 }
@@ -70,19 +70,19 @@ body {
 }
 
 .buttons {
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 button {
   background: #ff5e78;
   border: none;
   padding: 12px 26px;
-  margin: 10px;
+  margin: 8px;
   border-radius: 30px;
   font-size: 16px;
   color: white;
   cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
+  transition: 0.2s;
 }
 
 button:hover {
@@ -119,53 +119,48 @@ button:hover {
 <div class="container">
   <div class="card">
 
+    <!-- STEP 1 -->
     <div id="step1">
       <div class="title">Hey, I am… oh, you know me 😉</div>
       <div class="name">Happy Valentine’s Day, Ruchika ❤️</div>
 
       <div class="photo">
-        <img src="us.jpg" alt="Her">
+        <img src="us.jpg" alt="Her photo">
       </div>
 
       <div class="text">Do you have a Valentine?</div>
 
       <div class="buttons">
-        <button onclick="goToYes()">Yes</button>
-        <button onclick="noValentine()">No</button>
+        <button onclick="valentineYes()">Yes</button>
+        <button onclick="valentineNo()">No</button>
       </div>
     </div>
 
+    <!-- STEP 2 -->
     <div id="step2" class="hidden">
-      <div class="text">
-        Please say yes 🥺👉👈  
-      </div>
-      <button onclick="goToYes()">Okay… Yes 💕</button>
+      <div class="text">Please say yes 🥺❤️</div>
+      <button onclick="valentineYes()">Okay… yes</button>
     </div>
 
+    <!-- STEP 3 -->
     <div id="step3" class="hidden">
-      <div class="text">
-        You are such a cutie pieeee 🥹❤️
-      </div>
-
-      <div class="text">
-        Will you be my Valentine?
-      </div>
+      <div class="text">You are such a cutie pieee 🥹❤️</div>
+      <div class="text">Will you be my Valentine?</div>
 
       <div class="buttons">
         <button onclick="finalYes()">Yes 💖</button>
-        <button onclick="cryAndYes()">No</button>
+        <button onclick="finalNo()">No</button>
       </div>
     </div>
 
+    <!-- FINAL -->
     <div id="final" class="hidden">
-      <div class="name">Happy Valentine’s Day, Ruchika ❤️</div>
-
+      <div class="name">Happy Valentine’s Day ❤️</div>
       <div class="text">
         Whatever this is, whatever it becomes —  
-        I’m always here as your best friend.  
-        Thank you for existing and being *you* 💕
+        I’ll always be here as your best friend.  
+        Thank you for being you 💕
       </div>
-
       <div class="text">❤️❤️❤️</div>
     </div>
 
@@ -173,18 +168,18 @@ button:hover {
 </div>
 
 <script>
-function noValentine() {
+function valentineNo() {
   document.getElementById("step1").classList.add("hidden");
   document.getElementById("step2").classList.remove("hidden");
 }
 
-function goToYes() {
+function valentineYes() {
   document.getElementById("step1").classList.add("hidden");
   document.getElementById("step2").classList.add("hidden");
   document.getElementById("step3").classList.remove("hidden");
 }
 
-function cryAndYes() {
+function finalNo() {
   alert("Pleaseeee say yes 😭");
   finalYes();
 }
@@ -194,8 +189,8 @@ function finalYes() {
   document.getElementById("final").classList.remove("hidden");
 }
 
-/* falling hearts */
-for (let i = 0; i < 30; i++) {
+/* Falling hearts */
+for (let i = 0; i < 28; i++) {
   const heart = document.createElement("div");
   heart.className = "heart";
   heart.innerHTML = "❤️";
@@ -208,5 +203,3 @@ for (let i = 0; i < 30; i++) {
 
 </body>
 </html>
-
-
